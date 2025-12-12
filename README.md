@@ -1,6 +1,6 @@
 # Atmosphere - iOS 18 Weather Experience
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Halecoder/atmosphere-ios-18-weather-experience)
 
 A visually breathtaking weather dashboard inspired by the design language of Apple's iOS 18. This application features a horizontal layout of four distinct weather cards (Sunny, Windy, Heavy Rain, Snowstorm), each serving as a dynamic window into atmospheric conditions. Built with a focus on glassmorphism, fluid animations, and responsive design, it delivers a premium, interactive experience reminiscent of iOS weather interfaces.
 
@@ -109,7 +109,7 @@ Deploy to Cloudflare Workers for global edge delivery. This setup handles static
 
    Your app will be live at a URL like `https://your-project.workers.dev`.
 
-[cloudflarebutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Halecoder/atmosphere-ios-18-weather-experience)
 
 For production monitoring, enable Cloudflare's observability in `wrangler.jsonc`.
 
