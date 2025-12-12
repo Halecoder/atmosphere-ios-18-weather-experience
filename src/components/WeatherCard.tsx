@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { SunIcon, WindIcon, RainIcon, SnowIcon } from './WeatherIcons';
 import { cn } from '@/lib/utils';
 export type WeatherType = 'sunny' | 'windy' | 'rain' | 'snow';
@@ -29,13 +29,32 @@ const weatherConfig = {
 };
 export const WeatherCard: React.FC<WeatherCardProps> = ({ type, city, temperature, condition }) => {
   const { Icon, gradient } = weatherConfig[type];
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-100, 100], [10, -10]);
+  const rotateY = useTransform(x, [-100, 100], [-10, 10]);
   return (
     <motion.div
-      className="w-full aspect-[3/4] rounded-6xl p-8 flex flex-col justify-between relative overflow-hidden text-white shadow-2xl cursor-pointer"
+      className="w-full aspect-[3/4] rounded-6xl p-8 flex flex-col justify-between relative overflow-hidden text-white shadow-2xl"
+      style={{
+        transformStyle: 'preserve-3d',
+        perspective: '1000px',
+        rotateX,
+        rotateY,
+      }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.05, boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)' }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        x.set(e.clientX - rect.left - rect.width / 2);
+        y.set(e.clientY - rect.top - rect.height / 2);
+      }}
+      onMouseLeave={() => {
+        x.set(0);
+        y.set(0);
+      }}
     >
       <div className={cn('absolute inset-0 -z-20', gradient)} />
       <div className="absolute inset-0 bg-black/10 backdrop-blur-xl -z-10" />
