@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { WeatherCard, WeatherType } from '@/components/WeatherCard';
 const weatherData: { type: WeatherType; city: string; temperature: number; condition: string }[] = [
   { type: 'sunny', city: 'Cupertino', temperature: 28, condition: 'Clear Skies' },
@@ -7,7 +7,7 @@ const weatherData: { type: WeatherType; city: string; temperature: number; condi
   { type: 'rain', city: 'Tokyo', temperature: 22, condition: 'Heavy Rain' },
   { type: 'snow', city: 'Hokkaido', temperature: -5, condition: 'Snowstorm' },
 ];
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -16,9 +16,13 @@ const containerVariants = {
     },
   },
 };
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { type: 'spring', stiffness: 100 } 
+  },
 };
 export function HomePage() {
   return (
@@ -47,7 +51,7 @@ export function HomePage() {
         </motion.div>
       </main>
       <footer className="w-full text-center py-8 text-neutral-500 text-sm">
-        <p>Built with ❤️ at Cloudflare</p>
+        <p>Built with ���️ at Cloudflare</p>
       </footer>
     </div>
   );
